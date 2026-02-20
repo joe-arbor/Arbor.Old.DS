@@ -1,0 +1,251 @@
+// TopNav — MIS-style top bar: school logo, menu items, search, Ask Arbor, Arbor logo.
+// Dark gradient background; search and Ask Arbor have their own light styling.
+
+.ds-top-nav {
+  --top-nav-bg-start: #3b3b3b;
+  --top-nav-bg-end: #2f2f2f;
+  --top-nav-text: #f0f0f0;
+  --top-nav-text-muted: #b3b3b3;
+  --top-nav-ask-bg: #c6e8be;
+  --top-nav-ask-text: #002a00;
+
+  background: linear-gradient(180deg, var(--top-nav-bg-start) 0%, var(--top-nav-bg-end) 100%);
+  color: var(--top-nav-text);
+  font-family: var(--font-family-standard);
+  font-size: var(--font-size-3-14);
+  font-weight: var(--font-weight-semi-bold);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  position: relative;
+  z-index: 100;
+}
+
+.ds-top-nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-large);
+  min-height: 56px;
+  padding: 0 var(--spacing-large);
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.ds-top-nav__start {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xlarge);
+  flex-shrink: 0;
+}
+
+.ds-top-nav__school-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ds-top-nav__school-logo-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.ds-top-nav__menu {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ds-top-nav__menu-item {
+  position: relative;
+  margin: 0;
+}
+
+.ds-top-nav__menu-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: var(--spacing-small) var(--spacing-medium);
+  color: var(--top-nav-text);
+  background: transparent;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  cursor: pointer;
+  border-radius: var(--corner-radius);
+  transition: background 0.15s ease, color 0.15s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--color-mono-white);
+  }
+
+  &--open {
+    background: rgba(255, 255, 255, 0.12);
+  }
+}
+
+.ds-top-nav__chevron {
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+
+.ds-top-nav__dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin: 0;
+  padding: var(--spacing-xsmall);
+  list-style: none;
+  background: var(--color-mono-white);
+  border: 1px solid var(--color-grey-200);
+  border-radius: var(--corner-radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  min-width: 180px;
+  z-index: 200;
+}
+
+.ds-top-nav__dropdown-link {
+  display: block;
+  width: 100%;
+  padding: var(--spacing-small) var(--spacing-medium);
+  text-align: left;
+  color: var(--color-grey-900);
+  background: transparent;
+  border: none;
+  font-family: inherit;
+  font-size: var(--font-size-3-14);
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.15s ease;
+
+  &:hover {
+    background: var(--color-grey-050);
+  }
+}
+
+.ds-top-nav__center {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-small);
+  flex: 1;
+  max-width: 480px;
+  margin: 0 var(--spacing-large);
+}
+
+.ds-top-nav__search-form {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+  background: var(--color-mono-white);
+  border-radius: 9999px;
+  padding: 0 var(--spacing-medium);
+  height: 36px;
+  border: 2px solid transparent;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+
+  &:hover {
+    background: var(--color-grey-050);
+    box-shadow: 0 0 0 1px var(--color-grey-200);
+  }
+
+  &:focus-within {
+    border-color: var(--color-brand-500);
+    box-shadow: 0 0 0 2px var(--color-brand-200);
+  }
+}
+
+.ds-top-nav__search-icon {
+  flex-shrink: 0;
+  color: var(--color-grey-500);
+  margin-right: var(--spacing-xsmall);
+}
+
+.ds-top-nav__search-input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  padding: 0;
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: var(--font-size-3-14);
+  color: var(--color-grey-900);
+
+  &::placeholder {
+    color: var(--color-grey-500);
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+/* Active = form is focused (user clicked into search) */
+.ds-top-nav__search-form:active:not(:focus-within) {
+  background: var(--color-grey-100);
+}
+
+.ds-top-nav__ask-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 var(--spacing-medium);
+  background: var(--top-nav-ask-bg);
+  color: var(--top-nav-ask-text);
+  border: none;
+  border-radius: 9999px;
+  font-family: inherit;
+  font-size: var(--font-size-3-14);
+  font-weight: var(--font-weight-bold);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.15s ease, transform 0.1s ease;
+
+  &:hover {
+    background: var(--color-extended-colours-green-100);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.ds-top-nav__ask-icon {
+  flex-shrink: 0;
+}
+
+.ds-top-nav__end {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.ds-top-nav__arbor-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--top-nav-text);
+}
+
+.ds-top-nav__arbor-icon {
+  flex-shrink: 0;
+}
+
+.ds-top-nav__arbor-text {
+  font-size: var(--font-size-4-16);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.02em;
+}

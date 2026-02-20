@@ -1,0 +1,74 @@
+// Sidebar — narrow icon strip: Home, Favourites, Notifications, My Calendar, Help & Learn, Sign Out.
+// Hover: lightest green background.
+
+.ds-sidebar {
+  width: 72px;
+  min-width: 72px;
+  background: var(--color-grey-050);
+  border-right: var(--border-weight) solid var(--color-grey-200);
+  display: flex;
+  flex-direction: column;
+}
+
+.ds-sidebar__nav {
+  flex: 1;
+  padding: var(--spacing-medium) 0;
+}
+
+.ds-sidebar__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xsmall);
+}
+
+.ds-sidebar__item {
+  margin: 0;
+  width: 100%;
+}
+
+.ds-sidebar__link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xsmall);
+  width: 100%;
+  min-height: 56px;
+  padding: var(--spacing-small) var(--spacing-xsmall);
+  color: var(--color-grey-800);
+  background: transparent;
+  border: none;
+  font-family: var(--font-family-standard);
+  font-size: 10px;
+  font-weight: var(--font-weight-regular);
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+
+  &:hover {
+    background: var(--color-extended-colours-green-050);
+    color: var(--color-grey-900);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-brand-500);
+    outline-offset: 2px;
+  }
+}
+
+.ds-sidebar__icon {
+  flex-shrink: 0;
+  color: inherit;
+}
+
+.ds-sidebar__label {
+  line-height: 1.2;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

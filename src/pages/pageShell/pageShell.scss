@@ -8,6 +8,13 @@ $sidebar-width: 240px;
   display: flex;
   min-height: 100vh;
   background: var(--page-color-background);
+
+  &--sidebar-collapsed .page-shell__sidebar {
+    width: 0;
+    min-width: 0;
+    overflow: hidden;
+    border-right-width: 0;
+  }
 }
 
 .page-shell__sidebar {
@@ -17,9 +24,18 @@ $sidebar-width: 240px;
   border-right: var(--border-weight) solid var(--page-base-color-border);
   display: flex;
   flex-direction: column;
+  transition: width 0.2s ease, min-width 0.2s ease;
+
+  &[hidden] {
+    display: none;
+  }
 }
 
 .page-shell__sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-small);
   padding: var(--spacing-large) var(--spacing-large) 0;
   border-bottom: var(--border-weight) solid var(--page-base-color-border);
   flex-shrink: 0;
@@ -32,6 +48,61 @@ $sidebar-width: 240px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--color-grey-600);
+  flex: 1;
+  min-width: 0;
+}
+
+.page-shell__sidebar-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  margin-bottom: var(--spacing-large);
+  padding: 0;
+  color: var(--color-grey-600);
+  background: transparent;
+  border: none;
+  border-radius: var(--corner-radius);
+  cursor: pointer;
+  transition: color 0.15s ease, background 0.15s ease;
+
+  &:hover {
+    color: var(--color-grey-900);
+    background: var(--color-grey-100);
+  }
+}
+
+.page-shell__sidebar-expand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xsmall);
+  width: 48px;
+  min-width: 48px;
+  padding: var(--spacing-medium) var(--spacing-xsmall);
+  font-size: 10px;
+  font-weight: var(--font-weight-semi-bold);
+  color: var(--color-grey-600);
+  background: var(--color-mono-white);
+  border: none;
+  border-right: var(--border-weight) solid var(--page-base-color-border);
+  cursor: pointer;
+  transition: color 0.15s ease, background 0.15s ease;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  letter-spacing: 0.02em;
+
+  &:hover {
+    color: var(--color-grey-900);
+    background: var(--color-grey-050);
+  }
+}
+
+.page-shell__sidebar-expand-label {
+  transform: rotate(-180deg);
+  white-space: nowrap;
 }
 
 .page-shell__nav {
@@ -129,6 +200,10 @@ $sidebar-width: 240px;
 .page-shell__canvas-inner {
   max-width: 900px;
   min-width: 0; /* allow shrink so grid/cards never overflow */
+
+  .page-shell--sidebar-collapsed & {
+    max-width: none;
+  }
 }
 
 .page-shell__canvas-header {

@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { flushSync } from 'react-dom';
 import classnames from 'classnames';
+import { PanelLeftClose, PanelLeftOpen } from 'lucide-react';
 import type { ShowcaseSection } from './showcaseSections';
 import { showcaseSections, COMPONENT_CATEGORIES } from './showcaseSections';
 import { ShowcaseContext } from './ShowcaseContext';
@@ -68,11 +69,22 @@ export const PageShell: React.FC<PageShellProps> = ({
     });
   };
 
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+
   return (
-    <div className={classnames('page-shell', className)}>
-      <aside className="page-shell__sidebar" aria-label="Showcase navigation">
+    <div className={classnames('page-shell', className, { 'page-shell--sidebar-collapsed': sidebarCollapsed })}>
+      <aside className="page-shell__sidebar" aria-label="Showcase navigation" hidden={sidebarCollapsed}>
         <div className="page-shell__sidebar-header">
           <h2 className="page-shell__sidebar-title">Components</h2>
+          <button
+            type="button"
+            className="page-shell__sidebar-toggle"
+            onClick={() => setSidebarCollapsed(true)}
+            aria-label="Collapse sidebar"
+            title="Collapse sidebar"
+          >
+            <PanelLeftClose size={20} aria-hidden />
+          </button>
         </div>
         <nav className="page-shell__nav">
           <ul className="page-shell__nav-list" role="list">
@@ -110,22 +122,13 @@ export const PageShell: React.FC<PageShellProps> = ({
                             'page-shell__nav-link--active': section.id === selectedId,
                           })}
                           onClick={(e) => {
-                            // #region agent log
-                            fetch('http://127.0.0.1:7622/ingest/8c9a920c-e800-47b1-bcc4-72c12ff2d909',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'3e222a'},body:JSON.stringify({sessionId:'3e222a',runId:'run1',hypothesisId:'H4',location:'PageShell.tsx:navClick',message:'nav link clicked',data:{sectionId:section.id},timestamp:Date.now()})}).catch(()=>{});
-                            // #endregion
                             const navButton = e.currentTarget;
-                            // Flush state so we can restore focus in the same tick.
                             flushSync(() => {
                               setSelectedId(section.id);
                               setExpanded(prev => new Set(prev).add(category));
                             });
                             navButton.focus();
-                            // Browser may still move focus to first focusable in new content (e.g. native color
-                            // input) in a later task; restore focus again so the colour picker doesn't open.
-                            const restore = () => {
-                              navButton.focus();
-                              fetch('http://127.0.0.1:7622/ingest/8c9a920c-e800-47b1-bcc4-72c12ff2d909',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'3e222a'},body:JSON.stringify({sessionId:'3e222a',runId:'run1',hypothesisId:'H4',location:'PageShell.tsx:restoreFocus',message:'restoreFocus ran',data:{},timestamp:Date.now()})}).catch(()=>{});
-                            };
+                            const restore = () => navButton.focus();
                             window.setTimeout(restore, 50);
                             window.setTimeout(restore, 120);
                           }}
@@ -142,6 +145,18 @@ export const PageShell: React.FC<PageShellProps> = ({
           </ul>
         </nav>
       </aside>
+      {sidebarCollapsed && (
+        <button
+          type="button"
+          className="page-shell__sidebar-expand"
+          onClick={() => setSidebarCollapsed(false)}
+          aria-label="Open sidebar"
+          title="Open sidebar"
+        >
+          <PanelLeftOpen size={20} aria-hidden />
+          <span className="page-shell__sidebar-expand-label">Components</span>
+        </button>
+      )}
       <main className="page-shell__canvas" aria-label="Component preview">
         <ShowcaseContext.Provider
           value={{

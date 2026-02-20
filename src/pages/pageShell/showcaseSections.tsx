@@ -22,6 +22,8 @@ import { InfoPanelShowcase } from './InfoPanelShowcase';
 import { TooltipShowcase } from './TooltipShowcase';
 import { ModalShowcase } from './ModalShowcase';
 import { SlideoverShowcase } from './SlideoverShowcase';
+import { TopNavShowcase } from './TopNavShowcase';
+import { SideNavShowcase } from './SideNavShowcase';
 import { KpiShowcase } from './KpiShowcase';
 import { TableShowcase } from './TableShowcase';
 import { WelcomeShowcase } from './WelcomeShowcase';
@@ -182,6 +184,20 @@ export const showcaseSections: ShowcaseSection[] = [
     category: 'Navigation',
     description: 'Tab sizes (Big, Medium, Small) and alignment (Left, Center, Right); active tab with optional icon.',
     render: () => <TabsShowcase />,
+  },
+  {
+    id: 'top-nav',
+    name: 'Top Nav',
+    category: 'Navigation',
+    description: 'MIS top bar: school logo, menu items (My Items, Students, School, Reporting, System), search (pill), Ask Arbor (opens slideover), Arbor logo.',
+    render: () => <TopNavShowcase />,
+  },
+  {
+    id: 'side-nav',
+    name: 'Side Nav',
+    category: 'Navigation',
+    description: 'Sidebar (Home, Favourites, Notifications, My Calendar, Help & Learn, Sign Out) with light green hover; Side menu with page title, tree nav, selection, group highlight, and favourite stars.',
+    render: () => <SideNavShowcase />,
   },
   {
     id: 'sections',
