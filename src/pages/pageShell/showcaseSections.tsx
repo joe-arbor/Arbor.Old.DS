@@ -24,6 +24,7 @@ import { ModalShowcase } from './ModalShowcase';
 import { SlideoverShowcase } from './SlideoverShowcase';
 import { TopNavShowcase } from './TopNavShowcase';
 import { SideNavShowcase } from './SideNavShowcase';
+import { BreadcrumbsShowcase } from './BreadcrumbsShowcase';
 import { KpiShowcase } from './KpiShowcase';
 import { TableShowcase } from './TableShowcase';
 import { WelcomeShowcase } from './WelcomeShowcase';
@@ -198,6 +199,13 @@ export const showcaseSections: ShowcaseSection[] = [
     category: 'Navigation',
     description: 'Sidebar (Home, Favourites, Notifications, My Calendar, Help & Learn, Sign Out) with light green hover; Side menu with page title, tree nav, selection, group highlight, and favourite stars.',
     render: () => <SideNavShowcase />,
+  },
+  {
+    id: 'breadcrumbs',
+    name: 'Breadcrumbs',
+    category: 'Navigation',
+    description: 'Trail below app bar: link crumbs, folder crumbs (dropdown), current crumb, / separators, copy trail icon. Green pill focus.',
+    render: () => <BreadcrumbsShowcase />,
   },
   {
     id: 'sections',

@@ -10,11 +10,13 @@ export interface TemplateRoute {
 
 export const TEMPLATE_ROUTES: TemplateRoute[] = [
   {
+    id: 'daily-attendance',
+    name: 'Daily Attendance',
+    description: 'Standard Arbor page: global nav, module nav (Attendance), content with breadcrumbs and attendance registers table.',
+  },
+  {
     id: 'behaviour',
     name: 'Behaviour',
     description: 'Behaviour / conduct template (MIS-style page).',
   },
-  // Add more MIS pages here, e.g.:
-  // { id: 'attendance', name: 'Attendance', description: '...' },
-  // { id: 'students', name: 'Students', description: '...' },
 ];

@@ -1,9 +1,11 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { TEMPLATE_ROUTES } from './templateRoutes';
+import { DailyAttendanceTemplate } from './DailyAttendanceTemplate';
 import { BehaviourTemplate } from './BehaviourTemplate';
 
 const TEMPLATE_COMPONENTS: Record<string, React.FC> = {
+  'daily-attendance': DailyAttendanceTemplate,
   behaviour: BehaviourTemplate,
 };
 

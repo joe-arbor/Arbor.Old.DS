@@ -1,0 +1,13 @@
+.breadcrumbs-showcase {
+  &__intro {
+    margin: 0 0 var(--spacing-large);
+    font-size: var(--font-size-3-14);
+    color: var(--color-grey-700);
+  }
+
+  &__demo {
+    border: 1px solid var(--color-grey-200);
+    border-radius: var(--corner-radius);
+    overflow: hidden;
+  }
+}

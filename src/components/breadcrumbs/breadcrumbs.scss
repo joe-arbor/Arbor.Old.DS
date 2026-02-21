@@ -1,0 +1,204 @@
+// Breadcrumbs — horizontal trail below app bar, above page title.
+// Link / folder (dropdown) / current crumbs; / separators; copy trail icon.
+// Spec: AG-Breadcrumbs; focus = green pill outline.
+
+.ds-breadcrumbs {
+  width: 100%;
+  height: 36px;
+  flex-shrink: 0;
+  background: var(--color-grey-050);
+  border-bottom: 1px solid var(--color-grey-200);
+}
+
+.ds-breadcrumbs__inner {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-small);
+  width: 100%;
+  height: 100%;
+  padding: 0 var(--spacing-large);
+  box-sizing: border-box;
+}
+
+.ds-breadcrumbs__leading {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .ds-breadcrumbs__leading-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    color: var(--color-grey-800);
+    background: var(--color-grey-100);
+    border: none;
+    border-radius: var(--corner-radius);
+    cursor: pointer;
+    transition: background 0.15s ease;
+
+    &:hover {
+      background: var(--color-grey-200);
+    }
+
+    &:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 2px var(--color-brand-500);
+    }
+  }
+}
+
+.ds-breadcrumbs__list {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+.ds-breadcrumbs__crumb {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xsmall);
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.ds-breadcrumbs__separator {
+  padding: 0 var(--spacing-xsmall);
+  color: var(--color-grey-600);
+  font-size: var(--font-size-3-14);
+  font-weight: var(--font-weight-regular);
+  user-select: none;
+}
+
+.ds-breadcrumbs__link,
+.ds-breadcrumbs__folder-btn,
+.ds-breadcrumbs__current {
+  font-family: var(--font-family-standard);
+  font-size: var(--font-size-3-14);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-grey-800);
+  padding: 4px 8px;
+  border-radius: var(--border-radius-round);
+  transition: background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.ds-breadcrumbs__link {
+  text-decoration: none;
+  background: transparent;
+  border: none;
+
+  &:hover {
+    color: var(--color-grey-900);
+    text-decoration: underline;
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--color-brand-500);
+  }
+}
+
+.ds-breadcrumbs__folder-wrap {
+  position: relative;
+}
+
+.ds-breadcrumbs__folder-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+
+  &:hover {
+    color: var(--color-grey-900);
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--color-brand-500);
+  }
+}
+
+.ds-breadcrumbs__chevron {
+  flex-shrink: 0;
+  color: inherit;
+}
+
+.ds-breadcrumbs__current {
+  background: transparent;
+  border: none;
+  cursor: default;
+  color: var(--color-grey-800);
+}
+
+.ds-breadcrumbs__dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin: 4px 0 0;
+  padding: var(--spacing-xsmall);
+  list-style: none;
+  background: var(--color-mono-white);
+  border: 1px solid var(--color-grey-200);
+  border-radius: var(--corner-radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  min-width: 180px;
+  z-index: 100;
+}
+
+.ds-breadcrumbs__dropdown-link {
+  display: block;
+  width: 100%;
+  padding: var(--spacing-small) var(--spacing-medium);
+  text-align: left;
+  color: var(--color-grey-900);
+  background: transparent;
+  border: none;
+  font-family: inherit;
+  font-size: var(--font-size-3-14);
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.15s ease;
+
+  &:hover {
+    background: var(--color-grey-050);
+  }
+}
+
+.ds-breadcrumbs__copy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  margin-left: var(--spacing-xsmall);
+  padding: 0;
+  color: var(--color-grey-600);
+  background: transparent;
+  border: none;
+  border-radius: var(--border-radius-round);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: color 0.15s ease, background 0.15s ease;
+
+  &:hover {
+    color: var(--color-grey-900);
+    background: var(--color-grey-100);
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--color-brand-500);
+  }
+}

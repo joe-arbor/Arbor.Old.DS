@@ -1,0 +1,87 @@
+// Daily Attendance template: TopNav, Sidebar | SideMenu | Content (breadcrumbs, title, filters, table).
+
+.template-page--with-nav {
+  .template-page__body {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .template-page__sidebar {
+    flex-shrink: 0;
+  }
+
+  .template-page__side-menu {
+    flex-shrink: 0;
+  }
+
+  .template-page__content {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    background: var(--color-mono-white);
+  }
+
+  .template-page__content .ds-breadcrumbs {
+    flex-shrink: 0;
+    width: 100%;
+  }
+
+  .template-page__content-inner {
+    flex: 1;
+    min-height: 0;
+    overflow: auto;
+    padding: 10px;
+  }
+}
+
+.template-page__content-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-medium);
+  margin-bottom: var(--spacing-large);
+}
+
+.template-page__content-header-top {
+  flex: 1;
+  min-width: 0;
+}
+
+.template-page__back {
+  display: inline-block;
+  margin-bottom: var(--spacing-xsmall);
+  font-size: var(--font-size-3-14);
+  color: var(--color-grey-600);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--color-grey-800);
+    text-decoration: underline;
+  }
+}
+
+.template-page__content-title {
+  margin: 0;
+  font-size: var(--type-headings-h2-size);
+  font-weight: var(--type-headings-h2-weight);
+  font-family: var(--type-headings-h2-family);
+  color: var(--color-grey-900);
+}
+
+.template-page__content-header-actions {
+  flex-shrink: 0;
+}
+
+.template-page__content .ds-filter-panel {
+  margin-bottom: var(--spacing-large);
+}
+
+.template-page__content .ds-arbor-table-wrapper {
+  flex: 1;
+  min-height: 300px;
+}
